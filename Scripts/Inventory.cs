@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
     private void Start() {
         GiveItem(1);
         GiveItem("watermelon");
+        GiveItem(2);
     }
     //아이템을 인벤토리에 넣어주는 코드
     public void GiveItem(int id) {
