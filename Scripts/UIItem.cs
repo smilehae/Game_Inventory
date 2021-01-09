@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems; // 드래그 확인용으로 쓰임
 
-public class UIItem : MonoBehaviour , IPointerClickHandler//인터페이스 : 클릭 및 드래그에 대한 것
+public class UIItem : MonoBehaviour , IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+    //IPointerClickHandler 클릭에 대한 것
 {
     //이 스크립트가 하는 일 : 아이템의 아이콘 보이기, 숨기기
     //아이콘이 존재하면 투명도를 0으로 하고, 아이콘이 없으면 투명도를 100으로 해서 숨겨버린다.
@@ -12,12 +13,14 @@ public class UIItem : MonoBehaviour , IPointerClickHandler//인터페이스 : �
     public Item item;
     public Image spriteImage;
     private UIItem selectedItem;
+    private Tooltip tooltip;
 
     private void Awake()
     {
         spriteImage = GetComponent<Image>();
         UpdateItem(null);
         selectedItem = GameObject.Find("selectedItem").GetComponent<UIItem>();
+        tooltip = GameObject.Find("Tooltip").GetComponent<Tooltip>();
     }
 
     public void UpdateItem(Item item) {
@@ -54,5 +57,17 @@ public class UIItem : MonoBehaviour , IPointerClickHandler//인터페이스 : �
             selectedItem.UpdateItem(null);
 
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (this.item != null) {
+            tooltip.GenerateTooltip(this.item);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        tooltip.gameObject.SetActive(false);
     }
 }
