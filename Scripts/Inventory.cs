@@ -13,6 +13,14 @@ public class Inventory : MonoBehaviour
         GiveItem("watermelon");
         GiveItem(2);
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
+        }
+    }
     //아이템을 인벤토리에 넣어주는 코드
     public void GiveItem(int id) {
         //데이터베이스에서 이 id 값을 가진 아이템을 가져오고

@@ -33,6 +33,7 @@ public class Tooltip : MonoBehaviour
             string tooltip = string.Format("<b>{0}</b>\n{1}\n\n<b>{2}</b>",item.name,item.description,statText);
             tooltipText.text = tooltip;
             gameObject.SetActive(true);
+            tooltipText.gameObject.SetActive(true);
         }
     }
 }

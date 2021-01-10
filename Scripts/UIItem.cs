@@ -68,6 +68,6 @@ public class UIItem : MonoBehaviour , IPointerClickHandler, IPointerEnterHandler
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        tooltip.gameObject.SetActive(false);
+       tooltip.gameObject.SetActive(false);
     }
 }
